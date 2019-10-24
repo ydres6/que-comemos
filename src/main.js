@@ -1,14 +1,18 @@
 import Vue from 'vue'
+import App from'./App.vue'
+//import Vuetify from 'vuetify/lib'
+//import 'vuetify/dist/vuetify.min.css'
 
 import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-
-import VueRouter from 'vue-router'
-import Login from './components/Login.vue'
-
-Vue.use(VueRouter)
+import BootstrapVue from 'bootstrap-vue'
+//Vue.use(Vuetify)
+Vue.use(BootstrapVue)
+Vue.use(VueRouter) 
 Vue.config.productionTip = false
+
+ 
+import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import {routes} from './routes'
 const router = new VueRouter({
@@ -18,5 +22,5 @@ const router = new VueRouter({
 
 new Vue({
   router,
-  render: h => h(Login),
-}).$mount('#login')
+  render: h => h(App),
+}).$mount('#app')
