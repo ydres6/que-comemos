@@ -3,15 +3,19 @@
     <h1>Alimento</h1>
 
     <button class="btn btn-primary" @click="solicitarCamara()">Escanear Codigo</button>
+    <router-view></router-view>
     </div>
+
+    
 </template>
 
 <script>
 export default {
   methods:{
       solicitarCamara(){
-
+            this.$router.push("/camara")
+    }
       }
   }
-}
+
 </script>
