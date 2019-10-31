@@ -1,21 +1,19 @@
 <template>
-    <div id="alimento">
+  <div id="alimento">
     <h1>Alimento</h1>
-
-    <button class="btn btn-primary" @click="solicitarCamara()">Escanear Codigo</button>
-    <router-view></router-view>
-    </div>
-
-    
+    <button
+            class="btn btn-primary"
+            @click="solicitarCamara()"
+          >Solicitar Camara</button>
+  </div>
 </template>
 
 <script>
 export default {
-  methods:{
-      solicitarCamara(){
-            this.$router.push("/camara")
+  methods: {
+    solicitarCamara(){
+        this.$router.push({name:'camara'})
     }
-      }
   }
-
+};
 </script>
