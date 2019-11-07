@@ -12,7 +12,7 @@
 export default {
   methods: {
     solicitarCamara(){
-        this.$router.push({name:'camara'})
+        this.$router.push({name:'qr'})
     }
   }
 };

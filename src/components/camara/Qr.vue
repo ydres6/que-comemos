@@ -1,17 +1,71 @@
 <template>
-  <div id="camara">
+  <div id="qr">
+    <h1>qr</h1>
+    <button @click="result = 'hola'">test</button>
+  <p class="error">{{ error }}</p>
 
+    <p class="decode-result">Last result: <b>{{ result }}</b></p>
+
+    <qrcode-stream @decode="onDecode" @init="onInit" />
+    
 </div>
+
 </template>
-<script>
-import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
+
+<script >
+import { QrcodeStream } from 'vue-qrcode-reader'
 
 export default {
-    
-  components: {
-    QrcodeStream,
-    QrcodeDropZone,
-    QrcodeCapture
+  
+  components: { QrcodeStream },
+  
+
+  data () {
+    return {
+      result: '',
+      error: ''
+    }
+  },
+  watch: {
+    result(){
+    console.log(this.result)
+      
+
+    }
+  },
+  methods: {
+    onDecode (result) {
+      this.result = result
+    },
+
+    async onInit (promise) {
+      try {
+        await promise
+      } catch (error) {
+        if (error.name === 'NotAllowedError') {
+          this.error = "ERROR: you need to grant camera access permisson"
+        } else if (error.name === 'NotFoundError') {
+          this.error = "ERROR: no camera on this device"
+        } else if (error.name === 'NotSupportedError') {
+          this.error = "ERROR: secure context required (HTTPS, localhost)"
+        } else if (error.name === 'NotReadableError') {
+          this.error = "ERROR: is the camera already in use?"
+        } else if (error.name === 'OverconstrainedError') {
+          this.error = "ERROR: installed cameras are not suitable"
+        } else if (error.name === 'StreamApiNotSupportedError') {
+          this.error = "ERROR: Stream API is not supported in this browser"
+        }
+      }
+    }
   }
 }
+
+
 </script>
+
+<style scoped>
+.error {
+  font-weight: bold;
+  color: red;
+}
+</style>
