@@ -3,7 +3,7 @@
     <h1>estadisticas</h1>
 
     <highcharts :options="chartOptions"></highcharts>
-    <highcharts :options="chartOptions"></highcharts>
+    
 
     <b-form-group id="input-group-id" label="Busqueda por ID:" label-for="input-id">
       <b-form-input
@@ -20,6 +20,7 @@
 <script>
 import { Chart } from "highcharts-vue";
 import Highcharts from "highcharts";
+let moment = require('moment');
 
 Highcharts.setOptions({
   title: {
@@ -271,14 +272,45 @@ export default {
       }
     },
     cambiarDatos() {
-      let arrayCalorias = [];
+      let arrayCalorias = []
+      let arrayCaloriasUltMes = [5];
       let i = 0;
+      let antUnaSem = moment().subtract(1, 'week').calendar();
+      let antDosSem = moment().subtract(2, 'week').calendar();
+      let antTresSem = moment().subtract(3, 'week').calendar();
+      let antCuatroSem = moment().subtract(4, 'week').calendar();
+      let antCincoSem = moment().subtract(5, 'week').calendar();
+
       const result = this.Usuarios[this.idBusqueda - 1];
 
       while (i < result.consumidos.length) {
         arrayCalorias[i] = result.consumidos[i].calorias;
-        i++;
-      }
+       i++;
+     }
+     
+     
+      while (i < result.consumidos.lenght) {
+          //let time = result.consumidos[i].fecha.getTime()
+          //Date.parse(result.consumidos[i].fecha.getTime()) > Date.parse(fechainicial))
+         // if (time>antUnaSem.getTime()){
+       // arrayCaloriasUltMes[4] += result.consumidos[i].calorias
+        //  }
+        //  if (time<antUnaSem.getTime()&&time>antDosSem.getTime()){
+        //  arrayCaloriasUltMes[3] += result.consumidos[i].calorias
+        //  }
+        //  if (time<antDosSem.getTime()&&time>antTresSem.getTime()){
+        //  arrayCaloriasUltMes[2] += result.consumidos[i].calorias
+       //   }
+       //   if (time<antTresSem.getTime()&&time>antCuatroSem.getTime()){
+         // arrayCaloriasUltMes[1] += result.consumidos[i].calorias
+         // }
+        //  if (time<antCautroSem.getTime()&&time>antCincoSem.getTime()){
+         // arrayCaloriasUltMes[0] += result.consumidos[i].calorias
+         // }
+          
+        //  i++
+      //}
+      
 
       this.chartOptions.series = { data: arrayCalorias };
     }
