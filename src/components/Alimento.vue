@@ -1,6 +1,6 @@
 <template>
   <div id="alimento">
-    <h1>Alimento</h1>
+    <h2>Alimento</h2>
     <button
             class="btn btn-primary"
             @click="solicitarCamara()"

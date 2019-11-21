@@ -1,6 +1,6 @@
 <template>
   <div id="estadisticas">
-    <h1>estadisticas</h1>
+    <h2>estadisticas</h2>
 
     <highcharts :options="chartOptions"></highcharts>
     
@@ -25,7 +25,7 @@ import Highcharts from "highcharts";
 
 Highcharts.setOptions({
   title: {
-    text: "Solar Employment Growth by Sector, 2010-2016"
+    text: "Calorias consumidas ultimo mes"
   }
 });
 
@@ -252,12 +252,22 @@ export default {
             {
               alimento: "lechuga",
               calorias: 500,
-              fecha: "2019-10-21 "
+              fecha: "2019-10-9 "
             },
             {
               alimento: "pollo",
               calorias: 395,
               fecha: "2019-10-24 "
+            },
+            {
+              alimento: "pizza",
+              calorias: 700,
+              fecha: "2019-10-10 "
+            },
+            {
+              alimento: "queso",
+              calorias: 600,
+              fecha: "2019-10-5 "
             }
           ]
         }
@@ -274,7 +284,7 @@ export default {
     },
     cambiarDatos() {
       //let arrayCalorias = []
-      let arrayCaloriasUltMes = [];
+      let arrayCaloriasUltMes = [4];
       let i = 0;
       let antUnaSem =Date.parse("2019-10-22")
       let antDosSem = Date.parse("2019-10-15")
@@ -294,13 +304,13 @@ export default {
      // i++;
     // }
      
-     
-      while (i < result.consumidos.length) {
-          let time=Date.parse(result.consumidos[i].fecha)
           arrayCaloriasUltMes[3]=0
           arrayCaloriasUltMes[2]=0
           arrayCaloriasUltMes[1]=0
           arrayCaloriasUltMes[0]=0
+      while (i < result.consumidos.length) {
+          let time=Date.parse(result.consumidos[i].fecha)
+          
           
         if (time>antUnaSem){
         arrayCaloriasUltMes[3] += result.consumidos[i].calorias
