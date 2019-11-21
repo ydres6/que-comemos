@@ -1,6 +1,6 @@
 <template>
 <div id="usuario">
-  <h1>usuario</h1>
+  <h2>usuario</h2>
     </div>
 </template>
 
