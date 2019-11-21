@@ -14,13 +14,14 @@
       ></b-form-input>
     </b-form-group>
     <button type="button" @click="cambiarDatos()">Buscar</button>
+    <p1></p1>
   </div>
 </template>
 
 <script>
 import { Chart } from "highcharts-vue";
 import Highcharts from "highcharts";
-let moment = require('moment');
+//let moment = require('moment');
 
 Highcharts.setOptions({
   title: {
@@ -272,48 +273,56 @@ export default {
       }
     },
     cambiarDatos() {
-      let arrayCalorias = []
-      let arrayCaloriasUltMes = [5];
+      //let arrayCalorias = []
+      let arrayCaloriasUltMes = [];
       let i = 0;
-      let antUnaSem = moment().subtract(1, 'week').calendar();
-      let antDosSem = moment().subtract(2, 'week').calendar();
-      let antTresSem = moment().subtract(3, 'week').calendar();
-      let antCuatroSem = moment().subtract(4, 'week').calendar();
-      let antCincoSem = moment().subtract(5, 'week').calendar();
+      let antUnaSem =Date.parse("2019-10-22")
+      let antDosSem = Date.parse("2019-10-15")
+      let antTresSem =Date.parse( "2019-10-8")
+      let antCuatroSem =Date.parse( "2019-10-1")
+     
+      
 
       const result = this.Usuarios[this.idBusqueda - 1];
 
+     // while (i < result.consumidos.length) {
+          
+          // arrayCalorias[i] = result.consumidos[i].calorias;
+          
+        
+      
+     // i++;
+    // }
+     
+     
       while (i < result.consumidos.length) {
-        arrayCalorias[i] = result.consumidos[i].calorias;
-       i++;
+          let time=Date.parse(result.consumidos[i].fecha)
+          arrayCaloriasUltMes[3]=0
+          arrayCaloriasUltMes[2]=0
+          arrayCaloriasUltMes[1]=0
+          arrayCaloriasUltMes[0]=0
+          
+        if (time>antUnaSem){
+        arrayCaloriasUltMes[3] += result.consumidos[i].calorias
+          }
+         if (time<antUnaSem&&time>antDosSem){
+        arrayCaloriasUltMes[2] += result.consumidos[i].calorias
+         }
+         if (time<antDosSem&&time>antTresSem){
+         arrayCaloriasUltMes[1] += result.consumidos[i].calorias
+         }
+          if (time<antTresSem&&time>antCuatroSem){
+          arrayCaloriasUltMes[0] += result.consumidos[i].calorias
+          }
+         
+          
+        i++
      }
      
-     
-      while (i < result.consumidos.lenght) {
-          //let time = result.consumidos[i].fecha.getTime()
-          //Date.parse(result.consumidos[i].fecha.getTime()) > Date.parse(fechainicial))
-         // if (time>antUnaSem.getTime()){
-       // arrayCaloriasUltMes[4] += result.consumidos[i].calorias
-        //  }
-        //  if (time<antUnaSem.getTime()&&time>antDosSem.getTime()){
-        //  arrayCaloriasUltMes[3] += result.consumidos[i].calorias
-        //  }
-        //  if (time<antDosSem.getTime()&&time>antTresSem.getTime()){
-        //  arrayCaloriasUltMes[2] += result.consumidos[i].calorias
-       //   }
-       //   if (time<antTresSem.getTime()&&time>antCuatroSem.getTime()){
-         // arrayCaloriasUltMes[1] += result.consumidos[i].calorias
-         // }
-        //  if (time<antCautroSem.getTime()&&time>antCincoSem.getTime()){
-         // arrayCaloriasUltMes[0] += result.consumidos[i].calorias
-         // }
-          
-        //  i++
-      //}
-      
 
-      this.chartOptions.series = { data: arrayCalorias };
+      this.chartOptions.series = { data: arrayCaloriasUltMes };
     }
   }
-};
+}
+
 </script>
