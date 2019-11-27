@@ -4,8 +4,7 @@
     <!--<button type="button" @click="registrar()">qr</button>-->
     <ul class="nav nav-pills nav-fill">
       <router-link to="/ingreso" tag="li" exact class="nav-link">ingresar</router-link>
-      <router-link to="/registro" tag="li" exact class="nav-link">registrar</router-link>
-      <router-link to="/usuario" tag="li" exact class="nav-link">usuario</router-link>
+      
       <router-link to="/alimento" tag="li" exact class="nav-link">alimento</router-link>
       <router-link to="/estadisticas" tag="li" exact class="nav-link">estadisticas</router-link>
     </ul>

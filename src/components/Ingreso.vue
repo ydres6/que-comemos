@@ -3,10 +3,22 @@
 
 <b-form-input
         id="input-id"
-        v-model="idBusqueda"
+        v-model="dni_de_busqueda"
         required
         placeholder="Ingresa un DNI para ingresar"
+        
       ></b-form-input>
+<p>Dni buscado: {{ dni_de_busqueda}}</p>
+<button type="button" @click="validarDni()">Validar</button>
+      
+
+  
+<ul id="busco">
+  <li v-for= "usuario in Usuarios" v-bind:key="type">
+    
+    {{usuario.dni}}
+  </li>
+</ul>
 
 
         </div>
@@ -16,6 +28,8 @@
 export default {
 data() {
     return {
+      dni_de_busqueda: '',
+      
          Usuarios: [
         {
           id: 1,
@@ -39,23 +53,36 @@ data() {
           apellido: "pez"}
          ]
     }
-}//,
-//methods: {
-    //buscarUsuario(dni){
-        //let i=0
-        //resul = false
-       // while(i<Usuarios.length){
-         //   if (Usuarios.dni==dni){
-               // resul = true
-            //} else {
-             //   resul = false
-           // }
-        //i++
-       // }
-       // return resul
-    //}
-//}
+},
+methods: {
+    buscarUsuario(dni_de_busqueda){
+        let i=0
+        let estado=false
+        let resul =null
+        while(i<Usuarios.length&&estado==false){
+          if (Usuarios[i].dni==dni_de_busqueda){
+                estado = true
+                resul = usuario.nombre
+           }else {
+              
+              i++
+           }
+        
+        }
+        return resul
+    },
+    validarDni(){
 
+      if (buscarUsuario == null){
+        this.$router.push({name:'registro'})}
+        else{
+          this.$router.push({name:'usuario'})
+        }
+      return
+      }
+    }
 }
+
+
 
 </script>

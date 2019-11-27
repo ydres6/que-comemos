@@ -1,6 +1,6 @@
 <template>
 <div id="usuario">
-  <h2>usuario</h2>
+  <h2>tu usuario ya esta registrado</h2>
     </div>
 </template>
 

@@ -10,10 +10,10 @@ import Ingreso from './components/Ingreso.vue'
 
 export const routes = [
 
-    { path: '/registro', component: Registro },
+    { path: '/registro',name: "registro", component: Registro },
     { path: '/alimento', component: Alimento },
     { path: '/estadisticas', component: Estadisticas },
-    { path: '/usuario', component: Usuario },
+    { path: '/usuario',name: "usuario", component: Usuario },
     { path: '/camara', name: "camara", component: Camara },
     { path: '/qr', name: "qr", component: Qr },
     { path: '/ingreso', name: "ingreso", component: Ingreso }
