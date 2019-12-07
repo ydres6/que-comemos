@@ -14,6 +14,8 @@
       ></b-form-input>
     </b-form-group>
     <button type="button" @click="cambiarDatos()">Buscar</button>
+    <hr>
+    <button type="button" @click="probarStore()">Traer Datos</button>
     <p1></p1>
   </div>
 </template>
@@ -281,6 +283,9 @@ export default {
           return inputArray[i];
         }
       }
+    },
+    probarStore(){
+      this.chartOptions.series = { data:  this.$store.getters.getConsumo }
     },
     cambiarDatos() {
       //let arrayCalorias = []
