@@ -10,10 +10,16 @@
     </ul>
     
     <router-view></router-view>
+    <app-visualizador></app-visualizador>
+    <app-operador></app-operador>
   </div>
 </template>
 
 <script>
+import Visualizador from "./components/Visualizador.vue";
+import Operador from "./components/Operador.vue";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "app",
   components: {}
