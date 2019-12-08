@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>principal</h1>
-    <!--<button type="button" @click="registrar()">qr</button>-->
+    
     <ul class="nav nav-pills nav-fill">
       <router-link to="/ingreso" tag="li" exact class="nav-link">ingresar</router-link>
       
@@ -10,15 +10,12 @@
     </ul>
     
     <router-view></router-view>
-    <app-visualizador></app-visualizador>
-    <app-operador></app-operador>
+   
   </div>
 </template>
 
 <script>
-import Visualizador from "./components/Visualizador.vue";
-import Operador from "./components/Operador.vue";
-import { mapActions, mapGetters } from "vuex";
+
 
 export default {
   name: "app",
