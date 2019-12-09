@@ -10,14 +10,7 @@ export default new Vuex.Store({
         //usuarioEncontrado: "no encontrado",
         //alimentoEncontrado: "no encontrado",
         ultimoMes: "",
-
-       usuarios: {
-        dni: 23149966,
-        nombre: "carlos",   
-       },
-       usuarioEncontrado :"" 
-
-
+        usuarios: []
     },
 
 
@@ -25,10 +18,10 @@ export default new Vuex.Store({
 
         agregarConsumo: (state, consumoParaAgregar) => { state.consumoUsuarios.push(consumoParaAgregar) },
         agregarAlimento: (state, alimentoParaAgregar) => { state.alimentos.push(alimentoParaAgregar) },
-        buscarDni: (state, idABuscar) => { state.usuarios.find(u => u.dni == idABuscar)},
-
-        // buscarDni: (state, idABuscar) => { return state.usuario.find(u => u.dni == idABuscar) },
-            },
+        agregarUsuario: (state, usuarioParaAgregar) => { state.usuarios.push(usuarioParaAgregar) },
+        //buscarUsuario: (state, idABuscar) => { return state.usuario.find(u => u.id == idABuscar) },
+        //buscarAlimento: (state, idABuscar) => {return state.usuario.find(u => u.id == idABuscar)}
+    },
     actions: {
         agregarConsumo: ({ commit }, consumoParaAgregar) => {
             commit('agregarConsumo', consumoParaAgregar)
@@ -36,14 +29,17 @@ export default new Vuex.Store({
         agregarAlimento: ({ commit }, alimentoParaAgregar) => {
             commit('agregarAlimento', alimentoParaAgregar)
         },
-        buscarDni: ({ commit }, idABuscar) => {
-            commit('buscarDni', idABuscar)
+        agregarUsuario: ({ commit }, usuarioParaAgregar) => {
+            commit('agregarUsuario', usuarioParaAgregar)
+        },
+        buscarUsuario: ({ commit }, idABuscar) => {
+            commit('buscarUsuario', idABuscar)
         },
     },
     getters: {
         getConsumo: state => { return state.consumoUsuarios },
         getAlimento: state => { return state.alimentos },
-        getUltimoMes: state => { return state.ultimoMes }
-      
+        getUltimoMes: state => { return state.ultimoMes },
+        getUsuarios: state => { return state.usuarios },
     }
 })

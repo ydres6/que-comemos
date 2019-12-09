@@ -19,7 +19,7 @@
     <p v-if="(this.ok)">Nombre del alimento: {{ atributos.alimento }}</p>
     <p v-if="(this.ok)">Calorias: {{ atributos.calorias }}</p>
     <p v-if="(this.ok)">Fecha: {{ atributos.fecha }}</p>
-
+    <p v-if="(this.enviado)">Datos guardados</p>
     <button v-if="(this.ok)" type="button" @click="guardarDatos()">¿Quiere guardar estos datos?</button>
   </div>
  
@@ -35,6 +35,7 @@ export default {
   data () {
     return {
       ok:false,
+      enviado:false,
       result: "",
       error: null,
       dragover: false
@@ -56,6 +57,7 @@ export default {
 
         this.result = JSON.parse(content)
         this.error = null
+        this.enviado=false
         this.ok=true
       } catch (error) {
         if (error.name === 'DropImageFetchError') {
@@ -82,6 +84,7 @@ export default {
       this.$store.dispatch('agregarConsumo', Number(this.result.calorias))
       this.result =  ""
       this.ok = false
+      this.enviado= true
     }
   }
 }
