@@ -1,12 +1,13 @@
 <template>
   <div>
-    <p class="decode-result">Last result: <b>{{ result }}</b></p>
+  
 
     <p v-if="error !== null" class="drop-error">
       {{ error }}
     </p>
-   <p>Original message: "{{ message }}"</p>
-  <p>Computed reversed message: "{{ atributos.calorias }}"</p>
+  
+
+
 
     <qrcode-drop-zone @detect="onDetect" @dragover="onDragOver" @init="logErrors">
       <div class="drop-area" :class="{ 'dragover': dragover }">
@@ -14,7 +15,9 @@
       </div>
     </qrcode-drop-zone>
     <button type="button" @click="guardarDatos()">Guardar datos</button>
+    <p>Alimento a agregar: {{ atributos }}</p>
   </div>
+ 
 </template>
 
 <script>
@@ -26,7 +29,7 @@ export default {
 
   data () {
     return {
-      message:"hola",
+     
       result: null,
       error: null,
       dragover: false
@@ -34,10 +37,12 @@ export default {
   },
    computed: {
     // a computed getter
-    atributos: function () {
-   //   // `this` points to the vm instance
-      return this.result
-   }},
+   atributos: function () {
+   //  // `this` points to the vm instance
+   
+    return this.result
+  }},
+  
 
   methods: {
     async onDetect (promise) {
