@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="p">
   
 
     <p v-if="error !== null" class="drop-error">
@@ -90,12 +90,19 @@ export default {
 </script>
 
 <style>
+
+
+
+
+
 .drop-area {
-  height: 300px;
+
+  display: inline-block;
+  text-align: center;
   color: #fff;
   text-align: center;
   font-weight: bold;
-  padding: 10px;
+  padding: 200px;
 
   background-color: rgba(0,0,0,.5);
 }

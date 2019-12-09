@@ -1,6 +1,6 @@
 <template>
   <div id="registro">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form id="form" @submit="onSubmit" @reset="onReset" v-if="show">
       
 
       <b-form-group id="input-group-1" label="Tu nombre:" label-for="input-1">
@@ -95,5 +95,9 @@
 </script>
 
 <style>
-
+ #registro {
+    
+    display: inline-block;
+    text-align: center;
+ }
 </style>

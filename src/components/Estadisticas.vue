@@ -1,6 +1,6 @@
 <template>
   <div id="estadisticas">
-    <h2>estadisticas</h2>
+    <h2>Estadisticas</h2>
 
     <highcharts :options="chartOptions"></highcharts>
     

@@ -9,15 +9,26 @@ export default new Vuex.Store({
         alimentos: [],
         //usuarioEncontrado: "no encontrado",
         //alimentoEncontrado: "no encontrado",
-        ultimoMes: ""
+        ultimoMes: "",
+
+       usuarios: {
+        dni: 23149966,
+        nombre: "carlos",   
+       },
+       usuarioEncontrado :"" 
+
+
     },
+
+
     mutations: {
 
         agregarConsumo: (state, consumoParaAgregar) => { state.consumoUsuarios.push(consumoParaAgregar) },
         agregarAlimento: (state, alimentoParaAgregar) => { state.alimentos.push(alimentoParaAgregar) },
-        buscarUsuario: (state, idABuscar) => { return state.usuario.find(u => u.id == idABuscar) },
-        //buscarAlimento: (state, idABuscar) => {return state.usuario.find(u => u.id == idABuscar)}
-    },
+        buscarDni: (state, idABuscar) => { state.usuarios.find(u => u.dni == idABuscar)},
+
+        // buscarDni: (state, idABuscar) => { return state.usuario.find(u => u.dni == idABuscar) },
+            },
     actions: {
         agregarConsumo: ({ commit }, consumoParaAgregar) => {
             commit('agregarConsumo', consumoParaAgregar)
@@ -25,13 +36,14 @@ export default new Vuex.Store({
         agregarAlimento: ({ commit }, alimentoParaAgregar) => {
             commit('agregarAlimento', alimentoParaAgregar)
         },
-        buscarUsuario: ({ commit }, idABuscar) => {
-            commit('buscarUsuario', idABuscar)
+        buscarDni: ({ commit }, idABuscar) => {
+            commit('buscarDni', idABuscar)
         },
     },
     getters: {
         getConsumo: state => { return state.consumoUsuarios },
         getAlimento: state => { return state.alimentos },
         getUltimoMes: state => { return state.ultimoMes }
+      
     }
 })

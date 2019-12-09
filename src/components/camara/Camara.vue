@@ -3,7 +3,7 @@
     <h1>Camara</h1>
     <vue-web-cam ref="webcam"></vue-web-cam>
     <hr>
-    <img :src="photo" alt style="width:400px;height:300px">
+    <img :src="photo">
     <hr>
     <button type="button" @click="take_photo()">Take Photo</button>
   </div>
@@ -28,3 +28,10 @@ export default {
   }
 };
 </script>
+<style >
+#camara{
+    
+    display: inline-block;
+    text-align: center;
+ }
+</style>
