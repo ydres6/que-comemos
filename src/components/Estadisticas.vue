@@ -3,20 +3,13 @@
     <h2>estadisticas</h2>
 
     <highcharts :options="chartOptions"></highcharts>
-    
+    <highcharts :options="chartOptions"></highcharts>
 
-    <b-form-group id="input-group-id" label="Busqueda por ID:" label-for="input-id">
-      <b-form-input
-        id="input-id"
-        v-model="idBusqueda"
-        required
-        placeholder="Ingresa un ID para buscar"
-      ></b-form-input>
-    </b-form-group>
-    <button type="button" @click="cambiarDatos()">Buscar</button>
-    <hr>
+    
+   
+  
     <button type="button" @click="probarStore()">Traer Datos</button>
-    <button type="button" @click="probarAlimentos()">Traer semana</button>
+    <button type="button" @click="mostrarUltimaSemana()">Mostrar ultima semana</button>
     <p class="decode-result">Last result: <b>{{ temp2}}</b></p>
     <p1></p1>
   </div>
@@ -29,7 +22,7 @@ let moment = require('moment');
 
 Highcharts.setOptions({
   title: {
-    text: "Calorias consumidas ultimo mes"
+    text: "Calorias consumidas"
   }
 });
 
@@ -48,8 +41,7 @@ export default {
           }
         ]
       },
-      temp2:[],
-      temp:[0,0,0,0,0,0,0]
+      temp:[]
       
        
       
@@ -62,8 +54,9 @@ export default {
       
     },
 
-    probarAlimentos(){
-      //this.temp2= this.$store.getters.getAlimento
+    mostrarUltimaSemana(){
+     
+      this.temp=[0,0,0,0,0,0,0]
       let vector = []
       vector = this.$store.getters.getAlimento
       let i=0
@@ -72,7 +65,7 @@ export default {
       while (i < Object.keys(vector).length) {
         
       d = moment(vector[i].fecha).day()
-      this.temp[d]+= Number(vector[i].calorias)
+     this.temp[d]+= Number(vector[i].calorias)
       
       i++
      }
