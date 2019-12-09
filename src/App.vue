@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h1>principal</h1>
+    <h1>Que comemos</h1>
     
     <ul class="nav nav-pills nav-fill">
-      <router-link to="/ingreso" tag="li" exact class="nav-link">ingresar</router-link>
       
+      <router-link to="/registro" tag="li" exact class="nav-link">registrar</router-link>
       <router-link to="/alimento" tag="li" exact class="nav-link">alimento</router-link>
       <router-link to="/estadisticas" tag="li" exact class="nav-link">estadisticas</router-link>
     </ul>

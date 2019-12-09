@@ -11,11 +11,16 @@
 
     <qrcode-drop-zone @detect="onDetect" @dragover="onDragOver" @init="logErrors">
       <div class="drop-area" :class="{ 'dragover': dragover }">
-        DROP SOME IMAGES HERE
+        Arrastra la imagen hasta aqui
       </div>
     </qrcode-drop-zone>
-    <button type="button" @click="guardarDatos()">Guardar datos</button>
-    <p>Alimento a agregar: {{ atributos }}</p>
+    
+    <h3 v-if="(this.ok)"> Datos del alimento a subir</h3>
+    <p v-if="(this.ok)">Nombre del alimento: {{ atributos.alimento }}</p>
+    <p v-if="(this.ok)">Calorias: {{ atributos.calorias }}</p>
+    <p v-if="(this.ok)">Fecha: {{ atributos.fecha }}</p>
+
+    <button v-if="(this.ok)" type="button" @click="guardarDatos()">¿Quiere guardar estos datos?</button>
   </div>
  
 </template>
@@ -29,8 +34,8 @@ export default {
 
   data () {
     return {
-     
-      result: null,
+      ok:false,
+      result: "",
       error: null,
       dragover: false
     }
@@ -51,6 +56,7 @@ export default {
 
         this.result = JSON.parse(content)
         this.error = null
+        this.ok=true
       } catch (error) {
         if (error.name === 'DropImageFetchError') {
           this.error = 'Sorry, you can\'t load cross-origin images :/'
@@ -75,6 +81,7 @@ export default {
       this.$store.dispatch('agregarAlimento', this.result)
       this.$store.dispatch('agregarConsumo', Number(this.result.calorias))
       this.result =  ""
+      this.ok = false
     }
   }
 }
