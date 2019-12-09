@@ -3,14 +3,14 @@
     <h2>estadisticas</h2>
 
     <highcharts :options="chartOptions"></highcharts>
-    <highcharts :options="chartOptions"></highcharts>
+    
 
     
    
   
     <button type="button" @click="probarStore()">Traer Datos</button>
     <button type="button" @click="mostrarUltimaSemana()">Mostrar ultima semana</button>
-    <p class="decode-result">Last result: <b>{{ temp2}}</b></p>
+    
     <p1></p1>
   </div>
 </template>

@@ -5,6 +5,8 @@
     <p v-if="error !== null" class="drop-error">
       {{ error }}
     </p>
+   <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
 
     <qrcode-drop-zone @detect="onDetect" @dragover="onDragOver" @init="logErrors">
       <div class="drop-area" :class="{ 'dragover': dragover }">
@@ -24,11 +26,18 @@ export default {
 
   data () {
     return {
+      message:"hola",
       result: null,
       error: null,
       dragover: false
     }
   },
+   //computed: {
+    // a computed getter
+   // reversedMessage: function () {
+   //   // `this` points to the vm instance
+    //  return this.message.split('').reverse().join('')
+   // },
 
   methods: {
     async onDetect (promise) {
@@ -64,6 +73,8 @@ export default {
     }
   }
 }
+
+
 </script>
 
 <style>

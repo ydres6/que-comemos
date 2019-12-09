@@ -53,35 +53,35 @@ data() {
           apellido: "pez"}
          ]
     }
-},
-methods: {
-    buscarUsuario(dni_de_busqueda){
-        let i=0
-        let estado=false
-        let resul =null
-        while(i<Usuarios.length&&estado==false){
-          if (Usuarios[i].dni==dni_de_busqueda){
-                estado = true
-                resul = usuario.nombre
-           }else {
+}}//,
+//methods: {
+    //buscarUsuario(dni_de_busqueda){
+     //   let i=0
+     //   let estado=false
+    //    let resul =null
+    //    while(i<Usuarios.length&&estado==false){
+      //    if (Usuarios[i].dni==dni_de_busqueda){
+        //        estado = true
+      ///          resul = usuario.nombre
+        //   }else {
               
-              i++
-           }
+      //        i++
+      //     }
         
-        }
-        return resul
-    },
-    validarDni(){
+     //   }
+    //    return resul
+  //  },
+   // validarDni(){
 
-      if (buscarUsuario == null){
-        this.$router.push({name:'registro'})}
-        else{
-          this.$router.push({name:'usuario'})
-        }
-      return
-      }
-    }
-}
+   //   if (buscarUsuario == null){
+   //     this.$router.push({name:'registro'})}
+    //    else{
+   //       this.$router.push({name:'usuario'})
+   //     }
+   //   return
+  //    }
+ //   }
+//}
 
 
 
