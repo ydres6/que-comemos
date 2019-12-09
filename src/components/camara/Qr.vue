@@ -6,7 +6,7 @@
       {{ error }}
     </p>
    <p>Original message: "{{ message }}"</p>
-  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <p>Computed reversed message: "{{ atributos.calorias }}"</p>
 
     <qrcode-drop-zone @detect="onDetect" @dragover="onDragOver" @init="logErrors">
       <div class="drop-area" :class="{ 'dragover': dragover }">
@@ -32,19 +32,19 @@ export default {
       dragover: false
     }
   },
-   //computed: {
+   computed: {
     // a computed getter
-   // reversedMessage: function () {
+    atributos: function () {
    //   // `this` points to the vm instance
-    //  return this.message.split('').reverse().join('')
-   // },
+      return this.result
+   }},
 
   methods: {
     async onDetect (promise) {
       try {
         const { content } = await promise
 
-        this.result = content
+        this.result = JSON.parse(content)
         this.error = null
       } catch (error) {
         if (error.name === 'DropImageFetchError') {
@@ -66,9 +66,9 @@ export default {
     },
 
     guardarDatos(){
-      var nuevoAlimento = JSON.parse(this.result)
-      this.$store.dispatch('agregarAlimento', nuevoAlimento)
-      this.$store.dispatch('agregarConsumo', Number(nuevoAlimento.calorias))
+      //var nuevoAlimento = JSON.parse(this.result)
+      this.$store.dispatch('agregarAlimento', this.result)
+      this.$store.dispatch('agregarConsumo', Number(this.result.calorias))
       this.result =  ""
     }
   }
