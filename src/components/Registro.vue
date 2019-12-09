@@ -31,22 +31,8 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-4" label="Food:" label-for="input-4">
-        <b-form-select
-          id="input-4"
-          v-model="form.food"
-          :options="foods"
-          required
-        ></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-4">
-        <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-          <b-form-checkbox value="me">Check me out</b-form-checkbox>
-          <b-form-checkbox value="that">Check that out</b-form-checkbox>
-        </b-form-checkbox-group>
-      </b-form-group>
-
+      
+      
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
@@ -61,12 +47,11 @@
     data() {
       return {
         form: {
-          email: '',
           name: '',
-          food: null,
-          checked: []
+          apellido: '',
+          dni:  ''
         },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+       
         show: true
       }
     },
@@ -74,15 +59,16 @@
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+        this.$store.dispatch('agregarUsuario', this.form)
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
-        this.form.email = ''
+        
         this.form.name = ''
         this.form.apellido = ''
         this.form.dni = ''
-        this.form.food = null
+       
         this.form.checked = []
         // Trick to reset/clear native browser form validation state
         this.show = false
