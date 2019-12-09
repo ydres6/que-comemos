@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   <div id="titulo">
-     <img src="./1912695.png" width="60px" height="60px">
+  <img src="./1912695.png" width="60px" height="60px" margin-top="10px">
   <h1>Que Comemos!</h1>
   </div>  
   <b-navbar type="dark" variant="dark">

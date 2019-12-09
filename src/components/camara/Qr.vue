@@ -14,13 +14,29 @@
         Arrastra la imagen hasta aqui
       </div>
     </qrcode-drop-zone>
-    
-    <h3 v-if="(this.ok)"> Datos del alimento a subir</h3>
-    <p v-if="(this.ok)">Nombre del alimento: {{ atributos.alimento }}</p>
-    <p v-if="(this.ok)">Calorias: {{ atributos.calorias }}</p>
-    <p v-if="(this.ok)">Fecha: {{ atributos.fecha }}</p>
+
+  <h3 v-if="(this.ok)"> Detalle</h3>
+  <table id="tabla" v-if="(this.ok)" class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Alimento</th>
+      <th scope="col">Calorias</th>
+     <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{ atributos.alimento }}</td>    
+      <td>{{ atributos.calorias }}</td> 
+      <td>{{ atributos.fecha }}</td>
+    </tr>
+  </tbody>
+</table>
     <p v-if="(this.enviado)">Datos guardados</p>
-    <button v-if="(this.ok)" type="button" @click="guardarDatos()">¿Quiere guardar estos datos?</button>
+    <b-button type="submit" variant="primary" v-if="(this.ok)" @click="guardarDatos()">Guardar Datos</b-button>
   </div>
  
 </template>
@@ -95,11 +111,13 @@ export default {
 <style>
 
 
+#tabla {
 
+  text-align: center;
 
-
+}
 .drop-area {
-
+  margin-top: 20px;
   display: inline-block;
   text-align: center;
   color: #fff;
